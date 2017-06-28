@@ -1,9 +1,13 @@
 import React from 'react';
+import AddFishForm from './AddFishForm';
 
 class Order extends React.Component {
   render() {
     return (
-      <p>Order</p>
+      <div>
+        <h2>Order</h2>
+        <AddFishForm />
+      </div>
     )
   }
 }
