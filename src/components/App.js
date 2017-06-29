@@ -18,6 +18,7 @@ constructor() {
     //we're binding the method to our component
   this.addFish = this.addFish.bind(this);
   this.loadSamples = this.loadSamples.bind(this);
+  this.addToOrder = this.addToOrder.bind(this);
 
   //getinitialstate ( <<--- react create class version but we do it in es6 version)
   this.state = {
@@ -60,6 +61,19 @@ loadSamples() {
   });
 }
 
+addToOrder(key) {
+  //take a copy of our state
+  const order = {...this.state.order};
+
+  //update or add the new number of fish ordered
+  //order[key] is like saying order.fish1, because we don't know which fish we're at we need to use the key to target
+    //kind of like when using a string parameter to target a scope variable in angular
+  order[key] = order[key] + 1 || 1;
+
+  //update our state
+  this.setState({order});
+}
+
   render() {
     return (
       <div className="catch-of-the-day">
@@ -74,7 +88,7 @@ loadSamples() {
             {
               Object
                 .keys(this.state.fishes)
-                .map(key => <Fish key={key} details={this.state.fishes[key]} />)
+                .map(key => <Fish key={key} details={this.state.fishes[key]} addToOrder={this.addToOrder} />)
             }
           </ul>
         </div>

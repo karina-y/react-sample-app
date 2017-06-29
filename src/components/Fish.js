@@ -5,7 +5,9 @@ import {formatPrice} from '../helpers';
 class Fish extends React.Component {
   render() {
     const {details} = this.props;
-
+    const isAvailable = details.status === 'available';
+    const buttonText = isAvailable ? 'Add To Order' : 'Sold Out!';
+    
     return (
       <li className="menu-fish">
         {/* when setting the attribute value of a tag to a variable, you don't need the double quotes */}
@@ -18,7 +20,7 @@ class Fish extends React.Component {
           </span>
         </h3>
         <p>{details.desc}</p>
-        <button>Add To Order</button>
+        <button disabled={!isAvailable} onClick={() => this.props.addToOrder('fish-1')}>{buttonText}</button>
       </li>
     )
   }

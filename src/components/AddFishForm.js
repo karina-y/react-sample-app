@@ -14,7 +14,7 @@ class AddFishForm extends React.Component {
       image: this.image.value
     }
 
-    //needs to call addfish?
+    //needs to call addfish
     this.props.addFish(fish);
     this.fishForm.reset();
 
