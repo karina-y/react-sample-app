@@ -4,15 +4,19 @@ import React from 'react';
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
+import sampleFishes from '../sample-fishes';
 
-
+//state lives in our App
 class App extends React.Component {
 
 constructor() {
   //cannot call keyword "this" until react component is initialized
   super();
 
+  //these lines allow us to utilize keyword "this" throughout the corresponding methods within this class
+    //we're binding the method to our component
   this.addFish = this.addFish.bind(this);
+  this.loadSamples = this.loadSamples.bind(this);
 
   //getinitialstate ( <<--- react create class version but we do it in es6 version)
   this.state = {
@@ -35,8 +39,6 @@ addFish(fish) {
   const timestamp = Date.now(); //this is going to be our key
   fishes[`fish-${timestamp}`] = fish;
 
-
-
   console.log("fish", fishes);
 
   //set state
@@ -49,6 +51,13 @@ addFish(fish) {
   //long version ---> this.setState({ fishes: fishes });
   this.setState({ fishes }); //because the property is the same as the new state value, you can just say "fishes"
 }
+
+loadSamples() {
+  this.setState({
+    fishes: sampleFishes
+  })
+}
+
 
   render() {
     return (
