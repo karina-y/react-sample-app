@@ -5,6 +5,7 @@ import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
 import sampleFishes from '../sample-fishes';
+import Fish from './Fish';
 
 //state lives in our App
 class App extends React.Component {
@@ -52,21 +53,33 @@ addFish(fish) {
   this.setState({ fishes }); //because the property is the same as the new state value, you can just say "fishes"
 }
 
+//loads sample data into our state
 loadSamples() {
   this.setState({
     fishes: sampleFishes
-  })
+  });
 }
-
 
   render() {
     return (
       <div className="catch-of-the-day">
         <div className="menu">
           <Header tagline="Fresh Seafood Market" />
+          <ul className="list-of-fishes">
+            {/* react's version of ng-repeat will happen here */}
+            {/* this is how we're going to loop through our fish objects with javascript (jsx doesn't have any built in logic)
+                going to grab the keys of each object in fishes
+                and for each fish found, we're going to render the key into our Fish component (the li element)
+            */}
+            {
+              Object
+                .keys(this.state.fishes)
+                .map(key => <Fish key={key} />)
+            }
+          </ul>
         </div>
         <Order />
-        <Inventory addFish={this.addFish} />
+        <Inventory addFish={this.addFish} loadSamples={this.loadSamples} />
       </div>
     )
   }
