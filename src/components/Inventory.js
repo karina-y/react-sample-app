@@ -1,15 +1,15 @@
 import React from 'react';
 import AddFishForm from './AddFishForm';
 
-class Order extends React.Component {
+class Inventory extends React.Component {
   render() {
     return (
       <div>
-        <h2>Order</h2>
+        <h2>Inventory</h2>
         <AddFishForm />
       </div>
     )
   }
 }
 
-export default Order;
+export default Inventory;
