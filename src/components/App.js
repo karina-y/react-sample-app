@@ -74,7 +74,7 @@ loadSamples() {
             {
               Object
                 .keys(this.state.fishes)
-                .map(key => <Fish key={key} />)
+                .map(key => <Fish key={key} details={this.state.fishes[key]} />)
             }
           </ul>
         </div>
