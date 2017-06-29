@@ -35,6 +35,8 @@ addFish(fish) {
   const timestamp = Date.now(); //this is going to be our key
   fishes[`fish-${timestamp}`] = fish;
 
+
+
   console.log("fish", fishes);
 
   //set state
